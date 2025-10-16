@@ -15,13 +15,8 @@ class Solution {
             if(currrow==0||currrow==k-1){
                 grow=!grow;
             }
-            if(grow==true){
-                currrow+=1;
+            currrow += grow ? 1 : -1;
 
-            }
-            else{
-                currrow-=1;
-            }
         }
         StringBuilder ans=new StringBuilder();
         for(StringBuilder r:rows){
