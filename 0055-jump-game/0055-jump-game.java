@@ -8,14 +8,5 @@ class Solution {
             reach=Math.max(reach,i+nums[i]);
         }
         return true;
-        // int reach=arr.length-1;
-        // for(int i=arr.length-1;i>=0;i--){
-        //     if(i+arr[i]>=reach){
-        //         reach=i;
-        //     }
-        // }
-        // return reach==0;
-
-
     }
 }
