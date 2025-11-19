@@ -1,11 +1,7 @@
 class Solution {
     public int numberOfSubarrays(int[] nums, int k) {
-        int ans1=count(nums,k);
-        int ans2=count(nums,k-1);
-        int ans=ans1-ans2;
+        int ans=count(nums,k)-count(nums,k-1);
         return ans;
-
-        
     }
     public static int count(int []nums,int k){
         int l=0;
