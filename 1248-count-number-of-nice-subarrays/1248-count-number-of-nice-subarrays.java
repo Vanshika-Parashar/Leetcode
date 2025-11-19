@@ -14,8 +14,10 @@ class Solution {
             while(sum>k){
                 if(nums[l]%2!=0){
                     sum--;
+                    
                 }
                 l++;
+               
 
             }
             res=res+(r-l+1);
