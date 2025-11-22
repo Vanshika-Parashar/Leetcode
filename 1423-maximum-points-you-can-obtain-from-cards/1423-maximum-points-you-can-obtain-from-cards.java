@@ -7,12 +7,12 @@ class Solution {
         }
         int f=ans;
         int max=ans;
-        int c=k-1;
+        
 
        for(int i=0;i<k;i++){
-        f-=arr[c];
-        c--;
-        f+=arr[(n-i)-1];
+        f-=arr[k-1-i];
+        
+        f+=arr[n-1-i];
         max=Math.max(max,f);
        }
        return max;
