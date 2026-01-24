@@ -7,7 +7,12 @@ class Solution {
         char []d=t.toCharArray();
         Arrays.sort(c);
         Arrays.sort(d);
-        return Arrays.equals(c,d);
+        for(int i=0;i<c.length;i++){
+            if(c[i]!=d[i]){
+                return false;
+            }
+        } 
+        return true;   
        
        
             
