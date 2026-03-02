@@ -10,7 +10,7 @@ class Solution {
         }
         
         else if(x>arr[n-1]){
-            for(int i=n-1;i>n-k-1;i--){
+            for(int i=n-1;i>=n-k;i--){
                 ans.add(arr[i]);
             }
             Collections.sort(ans);
