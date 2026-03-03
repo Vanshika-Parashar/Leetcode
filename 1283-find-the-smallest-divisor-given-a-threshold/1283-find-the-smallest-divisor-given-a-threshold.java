@@ -40,7 +40,7 @@ class Solution {
     }
         int st=min;
         int end=max;
-        int ans=-1;
+        int ans=0;
     while(st<=end){
         int mid=st+(end-st)/2;
         int sum=divide(nums,mid);
