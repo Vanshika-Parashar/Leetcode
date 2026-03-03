@@ -58,7 +58,12 @@ class Solution {
     public int divide(int[]nums,int divisor){
         int sum=0;
         for(int i:nums){
-            sum+=(i+divisor-1)/divisor;
+            if(i%divisor==0){
+                sum+=i/divisor;
+            }
+            else{
+                sum+=(i/divisor)+1;
+            }
         }
         return sum;
     }
