@@ -7,9 +7,9 @@ class Solution {
         //     }
         // }
         // return false;
-        int n=nums.length;
+        
         HashSet<Integer>num=new HashSet<>();
-        for(int i=0;i<n;i++){
+        for(int i=0;i<nums.length;i++){
             if(num.contains(nums[i])){
                 return true;
             }
