@@ -14,7 +14,7 @@ class Solution {
                 return true;
             }
             else{
-                num.add(i);
+                num.add(nums[i]);
             }
         }
         return false;
