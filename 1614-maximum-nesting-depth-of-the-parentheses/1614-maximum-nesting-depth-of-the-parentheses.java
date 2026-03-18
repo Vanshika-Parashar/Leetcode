@@ -7,11 +7,12 @@ class Solution {
             char ch=s.charAt(i);
             if(ch=='('){
                 depth++;
+                max=Math.max(max,depth);
             }
             else if(ch==')'){
                 depth--;
             }
-            max=Math.max(max,depth);
+            
         }
         return max;
     }
