@@ -24,7 +24,7 @@ class Solution {
     //     }
     // }
     public List<String> backtrack(List<String> list, String str, int open, int close, int max){
-        if(open==max && close==max ){
+        if(str.length()==max*2 ){
             list.add(str);
             return list;
         }
