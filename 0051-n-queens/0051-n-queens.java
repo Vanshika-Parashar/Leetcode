@@ -114,13 +114,7 @@ class Solution {
     }
     public boolean ispossible(char[][]ch,int row,int col,int n){
         int i,j;
-        //down
-        i=row;
-        j=col;
-        while(i<n){
-            if(ch[i][j]=='Q')return false;
-            i++;
-        }
+    
         //column(hoda smj nhi aaya )
         i=0;
         j=col;
@@ -136,14 +130,7 @@ class Solution {
         i--;
         j++;
        }
-    //    south-east
-       i=row;
-       j=col;
-       while(i<n && j<n){
-        if(ch[i][j]=='Q')return false;
-        i++;
-        j++;
-       }
+    
     //    north-west
        i=row;
        j=col;
@@ -152,14 +139,7 @@ class Solution {
         i--;
         j--;
        }
-       //south-west
-       i=row;
-       j=col;
-       while(i<n && j>=0){
-        if(ch[i][j]=='Q')return false;
-        i++;
-        j--;
-       }
+     
        return true;
 
 
