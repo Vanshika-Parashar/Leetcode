@@ -1,0 +1,66 @@
+class Solution {
+    public int totalNQueens(int n) {
+        List<List<String>>ans=new ArrayList<>();
+        char[][]ch=new char[n][n];
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                ch[i][j]='.';
+            }
+        }
+        ans=nqueen(ch,n,0,ans);
+        int p=ans.size();
+        return p;
+        
+    }
+    public List<List<String>> nqueen(char[][]ch,int n,int row,List<List<String>>ans){
+        if(row==n){
+            List<String>list=new ArrayList<>();
+            for(int i=0;i<n;i++){
+               list.add(new String(ch[i]));
+            }
+            ans.add(list);
+            return ans;
+        }
+        for(int j=0;j<n;j++){
+            if(ispossible(ch,n,row,j)){
+                ch[row][j]='Q';
+                nqueen(ch,n,row+1,ans);
+                ch[row][j]='.';
+            }
+        }
+        return ans;
+    }
+    public boolean ispossible(char[][]ch,int n,int row,int col){
+        int i,j;
+       //down
+        i=row;
+        j=col;
+        while(i<n){
+            if(ch[i][j]=='Q')return false;
+            i++;
+        }
+        //column(hoda smj nhi aaya )
+        i=0;
+        j=col;
+        while(i<n){
+            if(ch[i][j]=='Q')return false;
+            i++;
+        }
+        i=row;
+        j=col;
+        while(i>=0 && j<n){
+            if(ch[i][j]=='Q')return false;
+            i--;
+            j++;
+
+        }
+        i=row;
+        j=col;
+        while(i>=0 && j>=0){
+            if(ch[i][j]=='Q')return false;
+            i--;
+            j--;
+        }
+        return true;
+    }
+}
