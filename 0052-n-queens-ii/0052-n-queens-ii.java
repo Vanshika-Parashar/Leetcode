@@ -29,18 +29,13 @@ class Solution {
     public boolean ispossible(char[][]ch,int n,int row,int col){
         int i,j;
        //down
-        i=row;
+        
+        //upr ame column m toh queen nhii h 
+        i = row - 1;
         j=col;
-        while(i<n){
-            if(ch[i][j]=='Q')return false;
-            i++;
-        }
-        //column(hoda smj nhi aaya )
-        i=0;
-        j=col;
-        while(i<n){
-            if(ch[i][j]=='Q')return false;
-            i++;
+        while(i >= 0){
+            if(ch[i][col] == 'Q') return false;
+            i--;
         }
         i=row;
         j=col;
