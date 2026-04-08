@@ -1,4 +1,5 @@
 class Solution {
+    private int count=0;
     public int totalNQueens(int n) {
         List<List<String>>ans=new ArrayList<>();
         char[][]ch=new char[n][n];
@@ -7,19 +8,14 @@ class Solution {
                 ch[i][j]='.';
             }
         }
-        ans=nqueen(ch,n,0,ans);
-        int p=ans.size();
-        return p;
+        nqueen(ch,n,0,ans);
+        return count;
         
     }
-    public List<List<String>> nqueen(char[][]ch,int n,int row,List<List<String>>ans){
+    public void nqueen(char[][]ch,int n,int row,List<List<String>>ans){
         if(row==n){
-            List<String>list=new ArrayList<>();
-            for(int i=0;i<n;i++){
-               list.add(new String(ch[i]));
-            }
-            ans.add(list);
-            return ans;
+            count++;
+            return;
         }
         for(int j=0;j<n;j++){
             if(ispossible(ch,n,row,j)){
@@ -28,7 +24,7 @@ class Solution {
                 ch[row][j]='.';
             }
         }
-        return ans;
+        
     }
     public boolean ispossible(char[][]ch,int n,int row,int col){
         int i,j;
