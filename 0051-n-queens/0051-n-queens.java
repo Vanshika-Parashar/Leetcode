@@ -114,12 +114,7 @@ class Solution {
     }
     public boolean ispossible(char[][]ch,int row,int col,int n){
         int i,j;
-        i = row;
-        j = col;
-        while(i < n){
-            if(ch[i][j] == 'Q') return false;
-            i++;
-        }
+        
         //column(hoda smj nhi aaya )
         i=0;
         j=col;
