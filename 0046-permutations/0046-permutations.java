@@ -27,7 +27,7 @@ class Solution {
             check[i] = true;
             list.add(nums[i]);
             
-            backtrack(nums, list, ans, check);
+            find(nums, list, ans, check);
             
             // backtrack
             list.remove(list.size() - 1);
