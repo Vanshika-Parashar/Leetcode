@@ -10,14 +10,29 @@ class Solution {
             ans.add(new ArrayList<>(list));
             return ans;
         }
-        for(int i=0;i<nums.length;i++){
-            if(check[i]==false){
-                list.add(nums[i]);
-                check[i]=true;
-                find(nums,list,ans,check);
-                check[i]=false;
-                list.remove(list.get(list.size()-1));
-            }
+        // //approach 1 checking false;
+        // for(int i=0;i<nums.length;i++){
+        //     if(check[i]==false){
+        //         list.add(nums[i]);
+        //         check[i]=true;
+        //         find(nums,list,ans,check);
+        //         check[i]=false;
+        //         list.remove(list.get(list.size()-1));
+        //     }
+        // }
+        
+        for (int i = 0; i < nums.length; i++) {
+            if (check[i]) continue;
+            
+            check[i] = true;
+            list.add(nums[i]);
+            
+            backtrack(nums, list, ans, check);
+            
+            // backtrack
+            list.remove(list.size() - 1);
+            check[i] = false;
+
         }
         return ans;
     }
