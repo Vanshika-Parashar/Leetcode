@@ -1,40 +1,20 @@
 class Solution {
     public List<String> generateParenthesis(int n) {
-           List<String> list = new ArrayList<String>();
-        backtrack(list, "", 0, 0, n);
-        return list;
+           List<String>ans=new ArrayList<>();
+           return find(n,0,0,ans,"");
     }
-    
-    // public void backtrack(List<String> list, String str, int open, int close, int max){
-        
-    //     if(str.length() == max*2){
-    //         list.add(str);
-    //         return;
-    //     }
-        
-    //     if(open < max){
-        
-        
-    //         backtrack(list, str+"(", open+1,close,max);                                      
-    //     }
-    //     if(close < open){
-
-        
-    //         backtrack(list, str+")", open, close+1, max);
-    //     }
-    // }
-    public List<String> backtrack(List<String> list, String str, int open, int close, int max){
-        if(open==max && close==max){
-            list.add(str);
-            return list;
+    public List<String> find(int n,int oc,int cc,List<String>ans,String s){
+        if(oc==n && cc==n){
+            ans.add(s);
+            return ans;
         }
-        if(open<max){
-            backtrack(list, str+'(', open+1, close, max);
+        if(oc<n){
+            find(n,oc+1,cc,ans,s+'(');
         }
-        if(close<open){
-            backtrack(list, str+')', open, close+1, max);
+        if(cc < n && cc<oc){
+            find(n,oc,cc+1,ans,s+')');
         }
-        return list;
+        return ans;
     }
         
-    }
+}
