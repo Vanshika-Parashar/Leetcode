@@ -2,35 +2,25 @@ class Solution {
     public boolean isHappy(int n) {
          
          Set<Integer>s=new HashSet<>();
-         s.add(n);
-         int sum=find(n);
+         return happy(n,s);
          
-         while(sum>1){
-            if(s.contains(sum)){
-                return false;
-            }
-            else{
-                s.add(sum);
-                sum=find(sum);
-            }
-            
-         }
-         if(sum==1){
-            return true;
-         }
-         return false;
-        
+         
     }
-    public int find(int n){
-        int sum=0;
-        int p=0;
-        while(n!=0){
-            p=n%10;
-            int sq=p*p;
-            sum+=sq;
-            n=n/10;
+    public boolean happy(int n,Set<Integer>s){
+        if(n==1){
+            return true;
         }
-        return sum;
+        String s1=String.valueOf(n);
+        if(s.contains(n)){
+            return false;
+        }
+        int sum=0;
+        for(int i=0;i<s1.length();i++){
+            int sq=(s1.charAt(i)-'0')*(s1.charAt(i)-'0');
+            sum+=sq;
+        }
+        s.add(n);
+        return happy(sum,s);
     }
     
     
