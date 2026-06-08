@@ -1,8 +1,6 @@
 class Solution {
     public boolean isHappy(int n) {
-         if(n<=0){
-            return false;
-         }
+         
          Set<Integer>s=new HashSet<>();
          s.add(n);
          int sum=find(n);
