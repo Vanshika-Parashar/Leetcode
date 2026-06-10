@@ -1,9 +1,9 @@
 class Solution {
     public boolean containsDuplicate(int[] nums) {
         Set<Integer>n=new HashSet<>();
-        for(int i=0;i<nums.length;i++){
-            if(n.contains(nums[i]))return true;
-            n.add(nums[i]);
+        for(int i:nums){
+            if(n.contains(i))return true;
+            n.add(i);
         }
         return false;
         
