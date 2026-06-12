@@ -14,6 +14,6 @@ public class Solution extends VersionControl {
                 i=mid+1;
             }
         }
-        return j;
+        return i;
     }
 }
