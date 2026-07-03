@@ -1,35 +1,44 @@
 class Solution {
     public String minWindow(String s, String t) {
-        int[]need=new int[256];
-        int[]window=new int[256];
-        int l=0;
-        int r=0;
-        int count=0;
-        int minlen=Integer.MAX_VALUE;
-        int st=0;
-        for(char c:t.toCharArray()){
-            need[c]++;
+        HashMap<Character,Integer>map=new HashMap<>();
+        for(char i:t.toCharArray()){
+            map.put(i,map.getOrDefault(i,0)+1);
         }
-        while(r<s.length()){
-            char c=s.charAt(r);
-            window[c]++;
-            if(need[c]>0 && window[c] <= need[c]){
-                count++;
+        int i=0;
+        int min=Integer.MAX_VALUE;
+        int st=-1;
+        int count=0;
+        for(int j=0;j<s.length();j++){
+            if(map.containsKey(s.charAt(j))){
+                if(map.get(s.charAt(j))>0){
+                    count++;
+                }
+                
+                map.put(s.charAt(j),map.get(s.charAt(j))-1);
             }
             while(count==t.length()){
-                if(r-l+1<minlen){
-                    minlen=r-l+1;
-                    st=l;
+                if(j-i+1<min){
+                    min=j-i+1;
+                    st=i;
                 }
-                char le=s.charAt(l);
-                if (need[le] > 0 && window[le] <= need[le]) {
+                char ch=s.charAt(i);
+                if(map.containsKey(ch)){
+                    map.put(ch,map.get(ch)+1);
+                    if(map.get(ch)>0){
                     count--;
                 }
-                window[le]--;
-                l++;
-            }
-            r++;
                 }
-                return minlen == Integer.MAX_VALUE ? "" : s.substring(st, st + minlen);
+                i++;
+                
+
             }
+
+            
         }
+        if(st==-1){
+            return "";
+        }
+        return s.substring(st,st+min);
+
+    }
+}
