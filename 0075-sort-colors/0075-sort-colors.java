@@ -1,13 +1,14 @@
 class Solution {
     public void sortColors(int[] nums) {
+        //Dutch Natinal Flag Algorithm
         int low=0;
         int mid=0;
         int high=nums.length-1;
         while(mid<=high){
             if(nums[mid]==0){
-                int tmep=nums[mid];
+                int temp=nums[mid];
                 nums[mid]=nums[low];
-                nums[low]=tmep;
+                nums[low]=temp;
                 low++;
                 mid++;
             }
@@ -21,7 +22,6 @@ class Solution {
                 high--;
             }
         }
-       
         
     }
 }
