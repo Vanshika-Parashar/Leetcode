@@ -1,21 +1,20 @@
 class Solution {
     public int maxScore(int[] arr, int k) {
-        int n=arr.length;
         int sum=0;
         for(int i=0;i<k;i++){
             sum+=arr[i];
         }
-        int ans=sum;
-        int left=k-1;
-        int right=n-1;
-        while(left>=0){
-            sum-=arr[left];
-            sum+=arr[right];
-            ans=Math.max(ans,sum);
-            left--;
-            right--;
+        int i=k-1;
+        int j=arr.length-1;
+        int max=sum;
+        while(i>=0){
+            sum-=arr[i];
+            sum+=arr[j];
+            i--;
+            j--;
+            max=Math.max(sum,max);
         }
-        return ans;
+        return max;
 
     }
 }
