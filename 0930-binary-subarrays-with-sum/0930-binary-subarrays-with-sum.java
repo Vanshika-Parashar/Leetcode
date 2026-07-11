@@ -1,30 +1,58 @@
 class Solution {
-    public int numSubarraysWithSum(int[] nums, int goal) {
-        int ans1=find(nums,goal);
-        int ans2=find(nums,goal-1);
-        int ans=ans1-ans2;
-        return ans;
-        
-    }
-    public static int find(int[]nums,int goal){
-        if(goal<0){
-            return 0;
-        }
-        int l=0;
-        int cnt=0;
-        int sum=0;
-        int r=0;
-        while(r<nums.length){
-            sum+=nums[r];
-            while(sum>goal){
-                sum-=nums[l];
-                l++;
+
+    public int numSubarraysWithSum(int[] nums, int k) {
+        if(k<=0){
+            int ans=0;
+            int len=0;
+            for(int x:nums){
+                if(x==0){
+                    len++;
+                }
+                else{
+                    ans+=len*(len+1)/2;
+                    len=0;
+                }
             }
-            cnt=cnt+(r-l+1);
-            r++;
-            
-            
+            ans+=len*(len+1)/2;
+            return ans;
         }
-        return cnt;
+        int a=0,i=0,j=0,b=0,k2=0,n=nums.length;
+        while(i<n && nums[i]==0)i++;
+        
+        while(j<n && k2<k){
+            if(nums[j]==1){
+                k2++;
+            }
+            j++;
+        }
+        if(k2<k)return 0;
+        j--;
+        b=j+1;
+        while(b<n && nums[b]==0){
+            b++;
+        }
+        b--;
+        
+        //sliding window
+        int sum=0;
+        while(b<n){
+            sum+=(i-a+1)*(b-j+1);
+            a=i+1;
+            i++;
+            while(i<n && nums[i]!=1){
+                i++;
+            }
+            j=b+1;
+            b=j+1;
+            while(b<n && nums[b]==0){
+                b++;
+            }
+            b--;
+        }
+        return sum;
+       
     }
-}
+
+    
+
+    }
