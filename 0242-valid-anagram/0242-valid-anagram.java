@@ -1,31 +1,15 @@
 class Solution {
-    public boolean isAnagram(String s, String t) {
-        // if(s.length()!=t.length()){
-        //     return false;
-        // }
-        // char []c=s.toCharArray();
-        // char []d=t.toCharArray();
-        // Arrays.sort(c);
-        // Arrays.sort(d);
-        // for(int i=0;i<c.length;i++){
-        //     if(c[i]!=d[i]){
-        //         return false;
-        //     }
-        // } 
-        // return true;   
-        if (s.length()!=t.length()){
-            return false;
+    public boolean isAnagram(String s, String t) { 
+        if(s.length()!=t.length())return false; 
+        HashMap<Character,Integer>map1=new HashMap<>();
+        HashMap<Character,Integer>map2=new HashMap<>();
+        for(char i:s.toCharArray()){
+            map1.put(i,map1.getOrDefault(i,0)+1);
         }
-        char[]c=s.toCharArray();
-        char[]h=t.toCharArray();
-        Arrays.sort(c);
-        Arrays.sort(h);
-        for(int i=0;i<c.length;i++){
-            if(c[i]!=h[i]){
-                return false;
-            }
+        for(char i:t.toCharArray()){
+            map2.put(i,map2.getOrDefault(i,0)+1);
         }
-        return true;
-
-    }
+        
+        return map1.equals(map2);
+}
 }
