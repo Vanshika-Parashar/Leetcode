@@ -5,11 +5,12 @@ class Solution {
         for(String i:words){
             
             String ans=reverse(i);
-            if(!set.contains(ans)){
-                set.add(i);
+            if(set.contains(ans)){
+                count++;
+                set.remove(i);
             }
             else{
-                count++;
+                set.add(i);
             }
         }
         return count;
