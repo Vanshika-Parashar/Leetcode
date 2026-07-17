@@ -1,42 +1,58 @@
 class Solution {
     public int[] findEvenNumbers(int[] digits) {
-        List<Integer>list=new ArrayList<>();
-        boolean[]check=new boolean[digits.length];
-        list=find(digits,1,0,list,check,0);
-        HashSet<Integer>set=new HashSet<>();
-        for(int i=0;i<list.size();i++){
-            set.add(list.get(i));
+
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        for (int d : digits) {
+            map.put(d, map.getOrDefault(d, 0) + 1);
         }
-        int[]ans=new int[set.size()];
-        int idx=0;
-        for(int i:set){
-            ans[idx++]=i;
-        }
-        Arrays.sort(ans);
-        return ans;
-        
-    }
-    public List<Integer> find(int[]arr, int no,int idx,List<Integer>list,boolean[]check,int ans){
-        if(no==4 ){
-            if(ans%2==0){
-                list.add(ans);
-                
-            }
-            return list;
-        }
-        for(int i=0;i<arr.length;i++){
-            if(no==1 && arr[i]==0){
+
+        List<Integer> list = new ArrayList<>();
+
+        for (int i = 100; i <= 999; i += 2) {
+
+            int x = i;
+            int c = x % 10;
+            x /= 10;
+            int b = x % 10;
+            x /= 10;
+            int a = x;
+
+            if (!map.containsKey(a))
                 continue;
-            }else{
-                if(check[i]==false){
-                    ans=ans*10+arr[i];
-                    check[i]=true;
-                    find(arr,no+1,i,list,check,ans);
-                    ans=ans/10;
-                    check[i]=false;
-                }
+
+            int afreq = map.get(a);
+            if (afreq == 1)
+                map.remove(a);
+            else
+                map.put(a, afreq - 1);
+
+            if (!map.containsKey(b)) {
+                map.put(a, afreq);
+                continue;
             }
+
+            int bfreq = map.get(b);
+            if (bfreq == 1)
+                map.remove(b);
+            else
+                map.put(b, bfreq - 1);
+
+            if (map.containsKey(c)) {
+                list.add(i);
+            }
+
+            // restore
+            map.put(b, bfreq);
+            map.put(a, afreq);
         }
-        return list;
+
+        int[] ans = new int[list.size()];
+
+        for (int i = 0; i < list.size(); i++) {
+            ans[i] = list.get(i);
+        }
+
+        return ans;
     }
 }
