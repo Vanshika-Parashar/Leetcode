@@ -15,13 +15,14 @@ class Solution {
         max=Math.max(sum,max);
         int i=1;
         for(int j=minutes;j<grumpy.length;j++){
+            if(grumpy[j]==1){
+                sum+=customer[j];
+            }
             if(grumpy[i-1]==1){
                 sum-=customer[i-1];
                 
             }
-            if(grumpy[j]==1){
-                sum+=customer[j];
-            }
+            
             i++;
             
             max=Math.max(sum,max);
