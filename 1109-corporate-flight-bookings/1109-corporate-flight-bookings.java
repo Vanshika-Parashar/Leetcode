@@ -8,10 +8,10 @@ class Solution {
             ans[first-1]+=seat;
             if(last<n)ans[last]-=seat;
         }
-        int[]prefix=new int[n];
+        int[]prefix=new int[ans.length];
         prefix[0]=ans[0];
-        for(int i=1;i<n;i++){
-            prefix[i]=prefix[i-1]+ans[i];
+        for(int i=1;i<prefix.length;i++){
+            prefix[i]=ans[i]+prefix[i-1];
         }
         return prefix;
     }
