@@ -1,32 +1,33 @@
 class Solution {
     public int[] answerQueries(int[] nums, int[] queries) {
+        int n=nums.length;
         Arrays.sort(nums);
-        int[]prefix=new int[nums.length];
-        int[]ans=new int[queries.length];
+        int prefix[]=new int[n];
         prefix[0]=nums[0];
-        for(int i=1;i<nums.length;i++){
+        for(int i=1;i<n;i++){
             prefix[i]=prefix[i-1]+nums[i];
         }
+        int ans[]=new int[queries.length];
         for(int i=0;i<queries.length;i++){
-            ans[i]=find(prefix,queries[i]);
+            ans[i]=find(queries[i],prefix);
         }
         return ans;
+        
     }
-    public int find(int[]prefix,int query){
+    public int find(int query,int[]prefix){
         int st=0;
-        int end=prefix.length-1;
-        int max=-1;
+        int end=prefix.length-1;;
+        int ans=-1;
         while(st<=end){
             int mid=st+(end-st)/2;
-            if(prefix[mid]>query){
-                end=mid-1;
-            }
-            else{
-                max=Math.max(max,mid);
+            if(prefix[mid]<=query){
+                ans=Math.max(mid,ans);
                 st=mid+1;
             }
+            else{
+                end=mid-1;
+            }
         }
-        
-        return max+1;
+        return ans+1;
     }
 }
