@@ -5,15 +5,13 @@ class Solution {
         for(int i=1;i<nums.length;i++){
             prefix[i]=prefix[i-1]+nums[i];
         }
-        int n=nums.length;
-        if(prefix[n-1]-prefix[0]==0)return 0;
-       
+        if(prefix[nums.length-1]-prefix[0]==0)return 0;
+        
         for(int i=1;i<nums.length;i++){
             int leftsum=prefix[i-1];
-            int rightsum=prefix[n-1]-prefix[i];
+            int rightsum=prefix[nums.length-1]-prefix[i];
             if(leftsum==rightsum)return i;
         }
         return -1;
-        
     }
 }
