@@ -13,7 +13,7 @@ class Solution {
                 i++;
                 j++;
             }
-            else if(g[i]>s[i])j++;
+            else if(g[i]>s[j])j++;
         }
        
        return count;
