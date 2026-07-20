@@ -1,21 +1,22 @@
 class Solution {
     public int findContentChildren(int[] g, int[] s) {
-        int n=g.length;
-        int m=s.length;
         Arrays.sort(g);
         Arrays.sort(s);
-        int i=0;
-        int j=0;
+        int count=0;
+       
+       int i=0;
+       int j=0;
+       while(i<g.length && j<s.length){
         
-        while(i<n && j<m){
             if(g[i]<=s[j]){
-                
+                count++;
                 i++;
+                j++;
             }
-            
-            j++;
+            else if(g[i]>s[i])j++;
         }
-        return i;
-        
+       
+       return count;
+
     }
 }
