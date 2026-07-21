@@ -13,8 +13,8 @@ class Solution {
             nums[0]=-nums[0];
         }
         int sum=0;
-        for(int i=0;i<n;i++){
-            sum+=nums[i];
+        for(int i:nums){
+            sum+=i;
         }
         return sum;
     }
