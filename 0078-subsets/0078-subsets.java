@@ -1,18 +1,16 @@
 class Solution {
     public List<List<Integer>> subsets(int[] nums) {
-        ArrayList<Integer>ans=new ArrayList<>();
-        List<List<Integer>>allsubsets=new ArrayList<>();
-        all(nums,0,ans,allsubsets);
-        return allsubsets;
+        List<Integer>list=new ArrayList<>();
+        List<List<Integer>>ans=new ArrayList<>();
+        return find(nums,0,ans,list);
     }
-    public List<List<Integer>> all(int[]nums,int idx,ArrayList<Integer>l1,List<List<Integer>>ans){
-       ans.add(new ArrayList<>(l1));
+    public List<List<Integer>> find(int[]nums,int idx,List<List<Integer>>ans,List<Integer>list){
+        ans.add(new ArrayList<>(list));
         for(int i=idx;i<nums.length;i++){
-            l1.add(nums[i]);
-            all(nums,i+1,l1,ans);
-            l1.remove(l1.size()-1);
+            list.add(nums[i]);
+            find(nums,i+1,ans,list);
+            list.remove(list.size()-1);
         }
-       
         return ans;
     }
 }
