@@ -1,27 +1,25 @@
 class Solution {
     public int countValidSubarrays(int[] nums, int x) {
+        int n=nums.length;
         int count=0;
-        for(int i=0;i<nums.length;i++){
+        for(int i=0;i<n;i++){
             long sum=0;
-            for(int j=i;j<nums.length;j++){
-                sum+=nums[j];
-                if(ischeck(sum,x)){
+            for(int j=i;j<n;j++){
+                if(find(sum+=nums[j],x)){
                     count++;
-                    
                 }
             }
         }
         return count;
-    }
-    public boolean ischeck(long n,int x){
-        long first=n;
-        int last=(int)(n%10);
-        
-        while(first>=10){
-            first=first/10;
-        }
-        first=(int)first;
-        return first==x && last==x;
 
+    }
+    public boolean find(long sum,int x){
+        if(sum<10 && sum==x)return true;
+        int last=(int)(sum%10);
+        while(sum>=10){
+            sum/=10;
+        }
+        int first=(int)sum;
+        return (first==x && last==x);
     }
 }
