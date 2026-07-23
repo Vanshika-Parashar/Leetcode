@@ -7,13 +7,19 @@ class Solution {
 
     }
     public List<List<Integer>> find(List<List<Integer>>ans,List<Integer>l,int k,int n,int idx){
-        if(k==0 && n==0){
-            ans.add(new ArrayList(l));
+        if(n==0){
+            if(l.size()==k){
+                ans.add(new ArrayList<>(l));
+
+            }
+            return ans;
         }
         for(int i=idx;i<=9;i++){
-            if(k!=0 && n-i>=0){
+            if(n-i>=0){
                 l.add(i);
-                find(ans,l,k-1,n-i,i+1);
+                n-=i;
+                find(ans,l,k,n,i+1);
+                n+=i;
                 l.remove(l.size()-1);
             }
         }
