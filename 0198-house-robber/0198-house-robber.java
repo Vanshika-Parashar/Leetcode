@@ -1,13 +1,17 @@
 class Solution {
     public int rob(int[] nums) {
-        int p1=0;
-        int p2=0;
-        for(int i:nums){
-            int curr=Math.max(p1,p2+i);
-            p2=p1;
-            p1=curr;
-        }
-        return p1;
-        
+       
+       int n=nums.length;
+       int[]dp=new int[n];
+       Arrays.fill(dp,-1);
+       return amount(nums,0,dp);
+
+    }
+    public int amount(int []nums,int i,int[]dp){
+        if(i>=nums.length)return 0;
+        if(dp[i]!=-1)return dp[i];
+        int take=nums[i]+amount(nums,i+2,dp);
+        int skip=amount(nums,i+1,dp);
+        return dp[i]=Math.max(take,skip);   
     }
 }
