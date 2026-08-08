@@ -1,38 +1,29 @@
 class Solution {
     public boolean exist(char[][] board, String word) {
-        int n=board.length;
-        int m=board[0].length;
+        int m=board.length;
+        int n=board[0].length;
         char ch=word.charAt(0);
-        boolean[][]correct=new boolean[n][m];
-        for(int i=0;i<n;i++){
-            for(int j=0;j<m;j++){
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
                 if(board[i][j]==ch){
-                    if(find(board,i,j,word,0))
-                    return true;
+                    if(find(board,word,i,j,0)) return true;;
                 }
             }
         }
         return false;
-        
     }
-    public boolean find(char[][] board,int r,int c,String s,int idx){
-        if(idx==s.length()){
-            return true;
-        }
-        int i,j;
-        int n=board.length;
-        int m=board[0].length;;
-         if(r < 0 || c < 0 || r >= n || c >= m || board[r][c] != s.charAt(idx)){
-            return false;
-        }
-
-        char temp=board[r][c];
-        board[r][c]='$';
-        boolean found=find(board,r,c+1,s,idx+1)||
-        find(board,r+1,c,s,idx+1)||
-        find(board,r-1,c,s,idx+1)||
-        find(board,r,c-1,s,idx+1);
-        board[r][c]=temp;
+    public boolean find(char[][]board,String word,int r, int col,int i){
+        if(i==word.length())return true;
+        if(r>=board.length || col>=board[0].length || r<0 || col<0)return false;
+        if(board[r][col]!=word.charAt(i))return false;
+        char temp=board[r][col];
+        board[r][col]='#';
+        boolean found=find(board,word,r,col+1,i+1)||
+        find(board,word,r+1,col,i+1)||
+        find(board,word,r-1,col,i+1)||
+        find(board,word,r,col-1,i+1);
+        board[r][col]=temp;
         return found;
+
     }
 }
