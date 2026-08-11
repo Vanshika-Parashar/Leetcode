@@ -1,7 +1,7 @@
 class Solution {
     public boolean canPartition(int[] nums) {
         int n=nums.length;
-        Arrays.sort(nums);
+        // Arrays.sort(nums);
         int sum=0;
         for(int i:nums){
             sum+=i;
