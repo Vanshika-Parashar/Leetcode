@@ -6,14 +6,15 @@ class Solution {
                 dp[i][j]=-1;
             }
         }
-        return path(0,0,m,n,dp);
-    }
-    public int path(int r,int c,int m,int n,int[][]dp){
-        if(r>=m || c>=n)return 0;
-        if(r==m-1 && c==n-1)return 1;
-        if(dp[r][c]!=-1)return dp[r][c];
-        int right=path(r,c+1,m,n,dp);
-        int down=path(r+1,c,m,n,dp);
-        return dp[r][c]=right+down;
+        return find(dp,m,n,0,0);
+
+      }
+      public int find(int[][]dp,int m,int n,int cr,int cc){
+        if(cr>=m || cc>=n)return 0;
+        if(cr==m-1 && cc==n-1)return 1;
+        if(dp[cr][cc]!=-1)return dp[cr][cc];
+        int right=find(dp,m,n,cr,cc+1);
+        int down=find(dp,m,n,cr+1,cc);
+        return dp[cr][cc]=right+down;
       }
 }
