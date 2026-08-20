@@ -1,17 +1,16 @@
 class Solution {
     public int rob(int[] nums) {
-       
-       int n=nums.length;
-       int[]dp=new int[n];
-       Arrays.fill(dp,-1);
-       return amount(nums,0,dp);
-
+      int n=nums.length; 
+      int[]dp=new int[n];
+      Arrays.fill(dp,-1);
+      
+      return find(nums,dp,0,n);
     }
-    public int amount(int []nums,int i,int[]dp){
-        if(i>=nums.length)return 0;
+    public int find(int []nums,int[]dp,int i,int n){
+        if(i>=n)return 0;
         if(dp[i]!=-1)return dp[i];
-        int take=nums[i]+amount(nums,i+2,dp);
-        int skip=amount(nums,i+1,dp);
-        return dp[i]=Math.max(take,skip);   
+        int take=nums[i]+find(nums,dp,i+2,n);
+        int skip=find(nums,dp,i+1,n);
+        return dp[i]=Math.max(take,skip);
     }
 }
