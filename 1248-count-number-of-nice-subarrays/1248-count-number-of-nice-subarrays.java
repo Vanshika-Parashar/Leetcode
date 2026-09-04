@@ -3,21 +3,24 @@ class Solution {
         for(int i=0;i<nums.length;i++){
             if(nums[i]%2==0){
                 nums[i]=0;
-            }
-            else{
+            }else{
                 nums[i]=1;
             }
         }
-        int a=0,i=0,j=0,b=0,k2=0,n=nums.length;
-        while(i<n && nums[i]==0)i++;
-        
-        while(j<n && k2<k){
+        int a=0,i=0,j=0,b=0,n=nums.length;
+        while(i<n && nums[i]==0){
+            i++;
+        }
+        j=i;
+        int count=0;
+        while(j<n && count<k){
             if(nums[j]==1){
-                k2++;
+                count++;
+
             }
             j++;
         }
-        if(k2<k)return 0;
+        if(count<k)return 0;
         j--;
         b=j+1;
         while(b<n && nums[b]==0){
@@ -25,13 +28,13 @@ class Solution {
         }
         b--;
         
-        //sliding window
-        int sum=0;
+        int ans=0;
+        
         while(b<n){
-            sum+=(i-a+1)*(b-j+1);
+            ans+=(i-a+1)*(b-j+1);
             a=i+1;
             i++;
-            while(i<n && nums[i]!=1){
+             while(i<n && nums[i]==0){
                 i++;
             }
             j=b+1;
@@ -41,10 +44,12 @@ class Solution {
             }
             b--;
         }
-        return sum;
+        return ans;
+
+        
 
        
     }
-    
-    
 }
+    
+    
