@@ -1,21 +1,21 @@
 class Solution {
     public boolean canArrange(int[] arr, int k) {
-        HashMap<Integer,Integer>map=new HashMap<>();
-        for(int i:arr){
-            int rem=i%k;
-            if(rem<0)rem+=k;
-            map.put(rem,map.getOrDefault(rem,0)+1);
+        HashMap<Integer,Integer>mp=new HashMap<>();
+        for(int i=0;i<arr.length;i++){
+            int rem=arr[i]%k;
+           if(rem<0)rem+=k;
+           mp.put(rem,mp.getOrDefault(rem,0)+1);
         }
-        if(map.containsKey(0)){
-            if(map.get(0)%2!=0)return false;
-            map.remove(0);
+        if(mp.containsKey(0)){
+            if(mp.get(0)%2!=0)return false;
+            mp.remove(0);
         }
-        for(int i:map.keySet()){
+        for(int i:mp.keySet()){
             int rem=k-i;
-            if(!map.containsKey(rem))return false;
-            int keyfreq=map.get(i);
-            int remfreq=map.get(rem);
-            if(keyfreq!=remfreq)return false;
+            if(!mp.containsKey(rem))return false;
+            int rfreq=mp.get(rem);
+            int kfreq=mp.get(i);
+            if(rfreq!=kfreq)return false;
         }
         return true;
     }
