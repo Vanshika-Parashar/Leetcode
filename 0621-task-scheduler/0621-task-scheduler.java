@@ -1,21 +1,21 @@
 class Solution {
     public int leastInterval(char[] tasks, int n) {
         HashMap<Character,Integer>map=new HashMap<>();
-        
-        for(Character s:tasks){
-            map.put(s,map.getOrDefault(s,0)+1);
+        for(char ch:tasks){
+            map.put(ch,map.getOrDefault(ch,0)+1);
         }
-        ArrayList<Map.Entry<Character,Integer>>list=new ArrayList<>(map.entrySet());
+        List<Map.Entry<Character,Integer>>list=new ArrayList<>(map.entrySet());
         Collections.sort(list,(a,b)->b.getValue()-a.getValue());
-        int maxFreq=list.get(0).getValue();
-        int idlespace=(maxFreq-1)*n;
-        int min=Integer.MAX_VALUE;
+        int maxfreq=list.get(0).getValue();
+        int idle=(maxfreq-1)*n;
         for(int i=1;i<list.size();i++){
-            int curr=list.get(i).getValue();
-            idlespace-=Math.min(curr,maxFreq-1);
-            
+            int val=list.get(i).getValue();
+            idle-=Math.min(maxfreq-1,val);
         }
-        if(idlespace<=0)return tasks.length;
-        return tasks.length+idlespace;
+        if(idle<=0){
+            return tasks.length;
+        }
+        return tasks.length+idle;
+
     }
 }
