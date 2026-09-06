@@ -3,7 +3,7 @@ class Solution {
         int maxreach=0;
         for(int i=0;i<nums.length-1;i++){
             if(i>maxreach)return false;
-            maxreach=Math.max(maxreach,i+nums[i]);
+            maxreach=Math.max(i+nums[i],maxreach);
         }
         if(maxreach>=nums.length-1)return true;
         return false;
