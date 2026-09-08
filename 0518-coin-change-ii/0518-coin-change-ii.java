@@ -9,17 +9,13 @@ class Solution {
         }
         return find(coins,amount,0,dp);
     }
-    public int find(int[]coins,int amount,int i,int[][]dp){
-        if(i==coins.length){
-            if(amount==0){
-                return 1;
-            }
-            else return 0;
-        }
-        if(dp[i][amount]!=-1)return dp[i][amount];
-        int skip=find(coins,amount,i+1,dp);
-        if(coins[i]>amount) return dp[i][amount]= skip;
-        int pick=find(coins,amount-coins[i],i,dp);
-        return dp[i][amount]= pick+skip;
+    public int find(int []coins,int t,int i,int[][]dp){
+        if(t==0)return 1;
+        if(i==coins.length)return 0;
+        if(dp[i][t]!=-1)return dp[i][t];
+        int skip=find(coins,t,i+1,dp);
+        if(coins[i]>t)return dp[i][t]=skip;
+        int take=find(coins,t-coins[i],i,dp);
+        return dp[i][t]= take+skip;
     }
 }
