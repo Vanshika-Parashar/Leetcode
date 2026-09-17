@@ -14,19 +14,20 @@ class Solution {
                 dp[i][j]=-1;
             }
         }
-        int ans= find(nums,t,dp,0,0);
+        int ans= find(nums,t,dp,0);
         if(ans==1)return true;
         return false;
     }
-    public int find(int []nums,int t,int[][]dp,int s,int i){
-        if(i==nums.length){
-            if(s==t)return 1;
-            return 0;
-        }
-        if(dp[i][s]!=-1)return dp[i][s];
-        int skip=find(nums,t,dp,s,i+1);
-        if(s+nums[i]>t)return dp[i][s]= skip;
-        int take=find(nums,t,dp,s+nums[i],i+1);
-        return dp[i][s]=Math.max(take,skip);
+    public int find(int []nums,int t,int[][]dp,int i){
+       if(i==nums.length){
+        if(t==0)return 1;
+        return 0;
+       }
+       if(dp[i][t]!=-1)return dp[i][t];
+       int skip=find(nums,t,dp,i+1);
+
+       if(nums[i]>t)return dp[i][t]=skip;
+       int take= find(nums,t-nums[i],dp,i+1);
+       return dp[i][t]=Math.max(take,skip);
     }
 }
