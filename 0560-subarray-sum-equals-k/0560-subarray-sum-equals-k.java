@@ -8,12 +8,12 @@ class Solution {
         }
         int count=0;
         for(int i=0;i<nums.length;i++){
-            int ele=prefix[i];
-            if(prefix[i]==k)count++;
-            int rem=prefix[i]-k;
+            int ele =prefix[i];
+            if(ele == k)count++;
+            int rem =ele-k;
             if(map.containsKey(rem)){
-                int freq=map.get(rem);
-                count+=freq;
+                count+=map.get(rem);
+                
             }
             if(map.containsKey(ele)){
                 map.put(ele,map.get(ele)+1);
@@ -22,5 +22,6 @@ class Solution {
             }
         }
         return count;
+
     }
 }
