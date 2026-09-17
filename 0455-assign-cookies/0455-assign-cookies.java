@@ -10,7 +10,7 @@ class Solution {
                 count++;
                 g++;
                 s++;
-            }else if(greed[g]>Size[s]){
+            }else {
                 s++;
             }
         }
