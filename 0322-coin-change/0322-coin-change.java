@@ -7,22 +7,22 @@ class Solution {
                 dp[i][j]=-1;
             }
         }
-        long ans=find(coins,amount,0,dp);
+        long ans=find(coins,amount,dp,0);
+
         if(ans==Integer.MAX_VALUE)return -1;
         int an=(int)(ans);
         return an;
-        
-    }
-    public long find(int[]coins,int t,int i,long[][]dp){
-        if(i==coins.length){
-            if(t==0)return 0;
-            return Integer.MAX_VALUE;
         }
-        if(dp[i][t]!=-1)return dp[i][t];
-        long skip=find(coins,t,i+1,dp);
-        if(coins[i]>t)return dp[i][t]=skip;
-        long take=1+find(coins,t-coins[i],i,dp);
-        return dp[i][t]=Math.min(skip,take);
-    }
+        public  long find(int[]coins,int am,long [][]dp,int i){
+            if(i==coins.length){
+                if(am==0)return 0;
+                return Integer.MAX_VALUE;
+            }
+            if(dp[i][am]!=-1)return dp[i][am];
+            long skip=find(coins,am,dp,i+1);
+            if(am<coins[i])return dp[i][am]=skip;
+            long take=1+find(coins,am-coins[i],dp,i);
+            return dp[i][am]=Math.min(take,skip);
+        }
     
 }
