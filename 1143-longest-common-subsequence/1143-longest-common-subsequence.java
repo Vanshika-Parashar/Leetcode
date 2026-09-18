@@ -10,17 +10,17 @@ class Solution {
                 dp[i][j]=-1;
             }
         }
-        return lcs(m-1,n-1,a,b,dp);
+        return find(m-1,n-1,a,b,dp);
+
+
     }
-    public int lcs(int a1,int b1,StringBuilder a,StringBuilder b,int[][]dp){
+    public int find(int a1,int b1, StringBuilder a, StringBuilder b,int[][]dp){
         if(a1<0 || b1<0)return 0;
         if(dp[a1][b1]!=-1)return dp[a1][b1];
         if(a.charAt(a1)==b.charAt(b1)){
-            return dp[a1][b1]= 1+lcs(a1-1,b1-1,a,b,dp);
+            return dp[a1][b1]=1+find(a1-1,b1-1,a,b,dp);
         }else{
-            return dp[a1][b1]= Math.max(lcs(a1-1,b1,a,b,dp),lcs(a1,b1-1,a,b,dp));
+            return dp[a1][b1]=Math.max(find(a1-1,b1,a,b,dp),find(a1,b1-1,a,b,dp));
         }
-
-
     }
 }
