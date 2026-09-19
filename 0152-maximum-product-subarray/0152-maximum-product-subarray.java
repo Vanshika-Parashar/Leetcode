@@ -8,7 +8,7 @@ class Solution {
             int oldmax=max;
             int oldmin=min;
             max=Math.max(cur,Math.max(oldmax*cur,oldmin*cur));
-            min=Math.min(cur,Math.min(oldmin*cur,oldmax*cur));
+            min=Math.min(cur,Math.min(oldmax*cur,oldmin*cur));
             ans=Math.max(ans,max);
         }
         return ans;
