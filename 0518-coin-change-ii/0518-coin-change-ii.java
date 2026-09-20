@@ -16,9 +16,7 @@ class Solution {
         }
         if(dp[i][t]!=-1)return dp[i][t];
         int skip=find(coins,t,i+1,dp);
-        if(t<coins[i]){
-            return dp[i][t]=skip;
-        }
+        if(t<coins[i])return dp[i][t]=skip;
         int take=find(coins,t-coins[i],i,dp);
         return dp[i][t]=take+skip;
     }
