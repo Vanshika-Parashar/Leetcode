@@ -13,15 +13,16 @@ class Solution {
         int an=(int)(ans);
         return an;
         }
-        public  long find(int[]coins,int am,long [][]dp,int i){
-            if(i==coins.length){
+        public  long find(int[]nums,int am,long [][]dp,int i){
+            if(i==nums.length){
                 if(am==0)return 0;
                 return Integer.MAX_VALUE;
+
             }
             if(dp[i][am]!=-1)return dp[i][am];
-            long skip=find(coins,am,dp,i+1);
-            if(am<coins[i])return dp[i][am]=skip;
-            long take=1+find(coins,am-coins[i],dp,i);
+            long skip=find(nums,am,dp,i+1);
+            if(am<nums[i])return dp[i][am]=skip;
+            long take=1+find(nums,am-nums[i],dp,i);
             return dp[i][am]=Math.min(take,skip);
         }
     
