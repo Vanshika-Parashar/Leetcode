@@ -5,7 +5,7 @@ class Solution {
         for(int i=1;i<prices.length;i++){
             int profit=prices[i]-minp;
             max=Math.max(profit,max);
-            minp=Math.min(minp,prices[i]);
+            minp=Math.min(prices[i],minp);
         }
         return max;
     }
