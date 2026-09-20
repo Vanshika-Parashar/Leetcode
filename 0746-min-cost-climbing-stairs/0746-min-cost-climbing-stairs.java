@@ -5,9 +5,9 @@ class Solution {
         int n=cost.length;
         return Math.min(find(cost,n-1,dp),find(cost,n-2,dp));
     }
-    public int find(int []cost,int idx,int[]dp){
-        if(idx==0 || idx==1)return cost[idx];
-        if(dp[idx]!=-1)return dp[idx];
-        return dp[idx]=cost[idx]+Math.min(find(cost,idx-1,dp),find(cost,idx-2,dp));
+    public int find(int []cost,int i,int[]dp){
+        if(i==0 || i==1)return cost[i];
+        if(dp[i]!=-1)return dp[i];
+        return dp[i]=cost[i]+Math.min(find(cost,i-1,dp),find(cost,i-2,dp));
     }
 }
