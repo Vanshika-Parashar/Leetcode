@@ -8,8 +8,7 @@ class Solution {
             }
             if(ans==nums[i]){
                 freq++;
-            }
-            else{
+            }else{
                 freq--;
             }
         }
