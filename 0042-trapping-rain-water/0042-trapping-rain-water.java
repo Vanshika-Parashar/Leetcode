@@ -8,7 +8,7 @@ class Solution {
        int ans=0;
        while(l<r){
         lmax=Math.max(lmax,height[l]);
-        rmax=Math.max(height[r],rmax);
+        rmax=Math.max(rmax,height[r]);
         if(lmax<rmax){
             ans+=lmax-height[l];
             l++;
