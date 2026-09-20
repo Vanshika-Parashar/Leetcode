@@ -1,6 +1,6 @@
 class Solution {
     public int maxArea(int[] height) {
-       int h=height.length;
+        int h=height.length;
        int l=0;
        int r=h-1;
        int max=0;
@@ -15,6 +15,7 @@ class Solution {
         }
        }
        return max;
+
     }
 
 }
