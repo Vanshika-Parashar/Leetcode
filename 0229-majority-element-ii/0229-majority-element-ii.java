@@ -4,16 +4,15 @@ class Solution {
         HashMap<Integer,Integer>map=new HashMap<>();
         for(int i:nums){
             map.put(i,map.getOrDefault(i,0)+1);
-
         }
-        List<Integer>list=new ArrayList<>();
-        for(int i:map.keySet()){
-            int val=map.get(i);
-            if(val>thresh){
-                list.add(i);
+        List<Integer>ans=new ArrayList<>();
+        for(int i:nums){
+            if(map.get(i)>thresh){
+                if(!ans.contains(i)){
+                    ans.add(i);
+                }
             }
         }
-        return list;
-
+        return ans;
     }
 }
