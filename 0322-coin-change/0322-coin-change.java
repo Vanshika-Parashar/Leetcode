@@ -17,7 +17,6 @@ class Solution {
             if(i==nums.length){
                 if(am==0)return 0;
                 return Integer.MAX_VALUE;
-
             }
             if(dp[i][am]!=-1)return dp[i][am];
             long skip=find(nums,am,dp,i+1);
