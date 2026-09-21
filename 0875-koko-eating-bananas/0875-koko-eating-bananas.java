@@ -1,35 +1,33 @@
 class Solution {
     public int minEatingSpeed(int[] arr, int h) {
-       int st=1;
-       int max=Integer.MIN_VALUE;
-       for(int i:arr){
-        max=Math.max(i,max);
-       }
-        int ans=0;
-        int end=max;
-        while(st<=end){
-            int mid=st+(end-st)/2;
-            long hour=find(mid,arr);
-            if(hour<=h){
-                ans=mid;
-                end=mid-1;
-            }
-            else{
-                st=mid+1;
-            }
+      int st=1;
+      int end=Integer.MIN_VALUE;
+      for(int i:arr){
+        end=Math.max(i,end);
+      }
+      int ans=0;
+      while(st<=end){
+        int mid=st+(end-st)/2;
+        long total=find(mid,arr);
+        if(total<=h){
+            ans=mid;
+            end=mid-1;
+
+        }else{
+            st=mid+1;
         }
-        return ans;
-}
-    public long find(int mid,int[]arr){
-        long hour=0;
-        for(int i:arr){
+      }
+      return ans;
+    }
+    public long find(int mid,int[]nums ){
+        long sum=0;
+        for(int i:nums){
             if(i%mid==0){
-                hour+=i/mid;
-            }
-            else{
-                hour+=i/mid+1;
+                sum+=i/mid;
+            }else{
+                sum+=i/mid+1;
             }
         }
-        return hour;
+        return sum;
     }
 }
