@@ -21,6 +21,6 @@ class Solution {
                 map.put(ele,1);
             }
         }
-        return count;   
+        return count;
     }
 }
