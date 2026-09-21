@@ -1,37 +1,32 @@
 class Solution {
     public int shipWithinDays(int[] w, int d) {
-    int sum=0;
-    int max=Integer.MIN_VALUE;
+    int st=Integer.MIN_VALUE;
+    int end=0;
     for(int i:w){
-        max=Math.max(i,max);
-        sum+=i;
+        end+=i;
+        st=Math.max(i,st);
     }
     int ans=0;
-    int st=max;
-    int end=sum;
     while(st<=end){
         int mid=st+(end-st)/2;
-        int days=find(mid,w);
+        int days=find(w,mid);
         if(days<=d){
             ans=mid;
             end=mid-1;
-        }
-        else{
+        }else{
             st=mid+1;
         }
-
     }
     return ans;
     }
-    public int find(int capacity,int[]arr){
-        int count=0;
+    public int find(int[]w,int mid){
         int days=1;
-        for(int i:arr){
-            if(count+i>capacity){
+        int count=0;
+        for(int i:w){
+            if(count+i>mid){
                 days++;
                 count=i;
-            }
-            else{
+            }else{
                 count+=i;
             }
         }
