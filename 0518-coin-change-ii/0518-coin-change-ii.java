@@ -11,9 +11,7 @@ class Solution {
     }
     public int find(int []coins,int t,int i,int[][]dp){
         if(i==coins.length){
-            if(t==0){
-                return 1;
-            }
+            if(t==0)return 1;
             return 0;
         }
         if(dp[i][t]!=-1)return dp[i][t];
