@@ -6,11 +6,9 @@ class Solution {
             map.put(i,map.getOrDefault(i,0)+1);
         }
         List<Integer>ans=new ArrayList<>();
-        for(int i:nums){
+        for(int i:map.keySet()){
             if(map.get(i)>thresh){
-                if(!ans.contains(i)){
-                    ans.add(i);
-                }
+                ans.add(i);
             }
         }
         return ans;
