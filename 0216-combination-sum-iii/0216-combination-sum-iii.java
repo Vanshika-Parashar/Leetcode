@@ -10,16 +10,15 @@ class Solution {
         if(n==0){
             if(l.size()==k){
                 ans.add(new ArrayList<>(l));
-
             }
             return ans;
         }
         for(int i=idx;i<=9;i++){
-            if(n-i>=0){
+            if(n>=i){
+                
                 l.add(i);
-                n-=i;
-                find(ans,l,k,n,i+1);
-                n+=i;
+                find(ans,l,k,n-i,i+1);
+                
                 l.remove(l.size()-1);
             }
         }
