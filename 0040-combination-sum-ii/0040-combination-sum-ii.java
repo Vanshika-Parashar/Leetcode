@@ -11,17 +11,14 @@ class Solution {
             ans.add(new ArrayList<>(l));
         }
         for(int i=idx;i<arr.length;i++){
-            if(i>idx && arr[i]==arr[i-1]){
-                continue;
-            }
-            if(t-arr[i]>=0){
-                t-=arr[i];
+            if(i>idx && arr[i]==arr[i-1])continue;
+            if(t>=arr[i]){
                 l.add(arr[i]);
-                find(arr,t,i+1,ans,l);
-                t+=arr[i];
+                find(arr,t-arr[i],i+1,ans,l);
                 l.remove(l.size()-1);
             }
         }
         return ans;
     }
+
 }
