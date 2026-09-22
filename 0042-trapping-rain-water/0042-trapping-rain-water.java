@@ -6,11 +6,10 @@ class Solution {
        int ans=0;
        int lmax=0;
        int rmax=0;
-
        while(l<r){
         lmax=Math.max(lmax,height[l]);
-        rmax=Math.max(height[r],rmax);
-        if(height[l]<height[r]){
+        rmax=Math.max(rmax,height[r]);
+        if(lmax<rmax){
             ans+=lmax-height[l];
             l++;
         }else{
