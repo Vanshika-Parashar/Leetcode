@@ -6,15 +6,16 @@ class Solution {
         totalgas+=gas[i];
         totalcost+=cost[i];
        }
-       if(totalgas<totalcost)return -1;
-       int ans=0;int total=0;
+       if(totalcost>totalgas)return -1;
+       int total=0;
+       int result=0;
        for(int i=0;i<gas.length;i++){
         total+=gas[i]-cost[i];
         if(total<0){
-            ans=i+1;
             total=0;
+            result=i+1;
         }
        }
-       return ans;
+       return result;
     }
 }
