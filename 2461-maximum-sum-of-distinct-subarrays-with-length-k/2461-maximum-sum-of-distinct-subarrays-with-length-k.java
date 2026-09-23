@@ -3,15 +3,15 @@ class Solution {
         int i=0;
         long sum=0;
         long max=Integer.MIN_VALUE;
-        Set<Integer>set=new HashSet<>();
+        HashSet<Integer>set=new HashSet<>();
         for(int j=0;j<arr.length;j++){
             while(set.contains(arr[j])){
-                sum-=arr[i];
                 set.remove(arr[i]);
+                sum-=arr[i];
                 i++;
             }
-            sum+=arr[j];
             set.add(arr[j]);
+            sum+=arr[j];
             while(j-i+1>k){
                 sum-=arr[i];
                 set.remove(arr[i]);
