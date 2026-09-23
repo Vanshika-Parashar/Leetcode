@@ -7,7 +7,8 @@ class Solution {
         }
         List<Integer>ans=new ArrayList<>();
         for(int i:map.keySet()){
-            if(map.get(i)>thresh){
+            int val=map.get(i);
+            if(val>thresh){
                 ans.add(i);
             }
         }
