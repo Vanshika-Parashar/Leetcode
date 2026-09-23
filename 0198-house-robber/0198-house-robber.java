@@ -1,6 +1,7 @@
 class Solution {
     public int rob(int[] nums) {
-     int[]dp=new int[nums.length];
+        int n=nums.length;
+     int[]dp=new int[n];
      Arrays.fill(dp,-1);
      return find(nums,0,dp);
     }
