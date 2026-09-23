@@ -12,7 +12,7 @@ class Solution {
             newInterval[1]=Math.max(intervals[i][1],newInterval[1]);
             i++;
         }
-        ans.add(newInterval);
+        ans.add(newInterval) ;
         while(i<intervals.length){
             ans.add(intervals[i]);
             i++;
@@ -22,5 +22,6 @@ class Solution {
             anss[j]=ans.get(j);
         }
         return anss;
+        
     }
 }
