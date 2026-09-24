@@ -3,21 +3,20 @@ class Solution {
         Set<String>contain=new HashSet<>();
        
         Set<String>ans=new HashSet<>();
-        
-        for(int j=0;j<=s.length()-10;j++){
-            String st=s.substring(j,j+10);
+        int i=0;
+        for(int j=10;j<=s.length();j++){
+            String st=s.substring(i,j);
             if(contain.contains(st)){
                 ans.add(st);
-                
+            }else{
+                contain.add(st);
             }
-           
-            contain.add(st);
+            i++;
         }
-        List<String>a=new ArrayList<>();
+        List<String>anss=new ArrayList<>();
         for(String st:ans){
-            a.add(st);
+            anss.add(st);
         }
-        return a;
-       
+        return anss;
     }
 }
