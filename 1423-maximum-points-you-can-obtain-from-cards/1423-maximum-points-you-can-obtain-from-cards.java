@@ -1,14 +1,14 @@
 class Solution {
     public int maxScore(int[] arr, int k) {
         int sum=0;
-        int i=0;
+        
        
-        for( i=0;i<k;i++){
-            sum+=arr[i];
+        for(int j=0;j<k;j++){
+            sum+=arr[j];
         }
-        int max=sum;
+        int i=k-1;
         int j=arr.length-1;
-        i=k-1;
+        int max=sum;
         while(i>=0){
             sum-=arr[i];
             sum+=arr[j];
@@ -17,7 +17,5 @@ class Solution {
             max=Math.max(sum,max);
         }
         return max;
-
-
     }
 }
