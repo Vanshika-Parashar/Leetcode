@@ -13,8 +13,8 @@ class Solution {
             set.add(arr[j]);
             sum+=arr[j];
             while(j-i+1>k){
-                sum-=arr[i];
                 set.remove(arr[i]);
+                sum-=arr[i];
                 i++;
             }
             if(j-i+1==k){
@@ -23,5 +23,6 @@ class Solution {
         }
         if(max==Integer.MIN_VALUE)return 0;
         return max;
+
     }
 }
