@@ -3,11 +3,10 @@ class Solution {
         int freq=0;
         int ans=0;
         for(int i:nums){
-            if(freq==0){
-                ans=i;
-            }
+            if(freq==0)ans=i;
             if(ans==i){
                 freq++;
+
             }else{
                 freq--;
             }
