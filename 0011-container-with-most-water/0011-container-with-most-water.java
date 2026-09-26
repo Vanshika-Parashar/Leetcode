@@ -7,12 +7,11 @@ class Solution {
        while(l<r){
         int area=r-l;
         int vol=area*Math.min(height[l],height[r]);
-        max=Math.max(vol,max);
-        if(height[l]>height[r]){
-            r--;
-        }
-        else{
+        max=Math.max(max,vol);
+        if(height[l]<height[r]){
             l++;
+        }else{
+            r--;
         }
        }
        return max;
