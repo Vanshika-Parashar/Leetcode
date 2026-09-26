@@ -8,7 +8,7 @@ class Solution {
         int oldmin=min;
         int cur=nums[i];
         max=Math.max(cur,Math.max(oldmax*cur,oldmin*cur));
-        min=Math.min(cur,Math.min(oldmax*cur,oldmin*cur));
+        min=Math.min(cur,Math.min(oldmin*cur,oldmax*cur));
         ans=Math.max(ans,max);
 
      }
