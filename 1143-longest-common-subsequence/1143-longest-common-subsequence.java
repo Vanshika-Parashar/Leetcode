@@ -1,7 +1,7 @@
 class Solution {
     public int longestCommonSubsequence(String text1, String text2) {
         StringBuilder a=new StringBuilder(text1);
-        StringBuilder b=new StringBuilder (text2);
+        StringBuilder b=new StringBuilder(text2);
         int m=a.length();
         int n=b.length();
         int[][]dp=new int[m][n];
@@ -11,7 +11,6 @@ class Solution {
             }
         }
         return find(m-1,n-1,a,b,dp);
-
     }
     public int find(int a1,int b1,StringBuilder a,StringBuilder b,int[][]dp){
         if(a1<0 || b1<0)return 0;
