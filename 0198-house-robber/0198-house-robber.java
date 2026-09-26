@@ -11,6 +11,5 @@ class Solution {
         int skip=find(nums,i+1,dp);
         int take=nums[i]+find(nums,i+2,dp);
         return dp[i]=Math.max(take,skip);
-
     }
 }
