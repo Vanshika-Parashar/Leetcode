@@ -5,19 +5,19 @@ class Solution {
         int r=h-1;
         int lmax=0;
         int rmax=0;
-        int an=0;
+        int ans=0;
         while(l<r){
-            lmax=Math.max(height[l],lmax);
+            lmax=Math.max(lmax,height[l]);
             rmax=Math.max(height[r],rmax);
             if(lmax<rmax){
-                an+=lmax-height[l];
+                ans+=lmax-height[l];
                 l++;
             }else{
-                an+=rmax-height[r];
+                ans+=rmax-height[r];
                 r--;
             }
         }
-        return an;
+        return ans;
         
     }
 }
