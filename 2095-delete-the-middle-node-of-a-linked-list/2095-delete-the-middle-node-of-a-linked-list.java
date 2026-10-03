@@ -17,10 +17,7 @@ class Solution {
             fast=fast.next.next;
             slow=slow.next;
         }
-        
-       
-    
-    slow.next=slow.next.next;
-    return head;
+        slow.next=slow.next.next;
+        return head;
     }
 }
