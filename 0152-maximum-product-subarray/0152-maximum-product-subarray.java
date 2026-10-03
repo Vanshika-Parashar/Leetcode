@@ -4,12 +4,12 @@ class Solution {
         int min=nums[0];
         int ans=nums[0];
         for(int i=1;i<nums.length;i++){
-            int cur=nums[i];
-            int olmin=min;
-            int olmax=max;
-            max=Math.max(cur,Math.max(olmin*cur,olmax*cur));
-            min=Math.min(cur,Math.min(olmin*cur,olmax*cur));
-            ans=Math.max(ans,max);
+            int oldmax=max;
+            int oldmin=min;
+            int cur=nums[i];;
+            max=Math.max(cur,Math.max(cur*oldmax,cur*oldmin));
+            min=Math.min(cur,Math.min(cur*oldmax,cur*oldmin));
+            ans=Math.max(max,ans);
         }
         return ans;
         
