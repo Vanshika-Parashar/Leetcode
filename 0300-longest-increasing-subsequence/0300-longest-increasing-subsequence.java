@@ -16,7 +16,7 @@ class Solution {
         int skip=find(nums,i+1,prev,dp);
         int take=0;
         if(prev==-1 || nums[i]>nums[prev]){
-            take=find(nums,i+1,i,dp);
+            take=1+find(nums,i+1,i,dp);
         }
         return dp[i][prev+1]=Math.max(take,skip);
     }
