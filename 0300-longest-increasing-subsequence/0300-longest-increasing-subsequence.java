@@ -3,14 +3,13 @@ class Solution {
         int n=nums.length;
         int[][]dp=new int[n][n+1];
         for(int i=0;i<nums.length;i++){
-            for(int j=0;j<dp[0].length;j++){
+            for(int j=0;j<nums.length+1;j++){
                 dp[i][j]=-1;
             }
         }
         return find(nums,0,-1,dp);
-        
     }
-    public int find(int[]nums,int i,int prev,int[][]dp){
+    public int find(int[]nums,int i,int prev ,int [][]dp){
         if(i==nums.length)return 0;
         if(dp[i][prev+1]!=-1)return dp[i][prev+1];
         int skip=find(nums,i+1,prev,dp);
