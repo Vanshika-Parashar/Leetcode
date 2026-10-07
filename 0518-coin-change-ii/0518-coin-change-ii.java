@@ -10,15 +10,15 @@ class Solution {
         
     }
     public int find(int[]nums,int t,int i,int[][]dp){
-       if(i==nums.length){
+      if(i==nums.length){
         if(t==0)return 1;
         return 0;
-       }
-       if(dp[i][t]!=-1)return dp[i][t];
-       int skip=find(nums,t,i+1,dp);
-       if(t<nums[i])return dp[i][t]=skip;
-       int take=find(nums,t-nums[i],i,dp);
-       return dp[i][t]=take+skip;
+      }
+      if(dp[i][t]!=-1)return dp[i][t];
+      int skip=find(nums,t,i+1,dp);
+      if(t<nums[i])return dp[i][t]=skip;
+      int take=find(nums,t-nums[i],i,dp);
+      return dp[i][t]=take+skip;
     }
 
 }
