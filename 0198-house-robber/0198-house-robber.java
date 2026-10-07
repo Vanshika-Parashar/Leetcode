@@ -10,6 +10,6 @@ class Solution {
         if(dp[i]!=-1)return dp[i];
         int take=nums[i]+find(nums,i+2,dp);
         int skip=find(nums,i+1,dp);
-        return dp[i]=Math.max(take ,skip);
+        return dp[i]=Math.max(take,skip);
     }
 }
