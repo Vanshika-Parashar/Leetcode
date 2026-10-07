@@ -9,15 +9,18 @@ class Solution {
         }
         for(int i=0;i<nums.length;i++){
             int ele=pre[i];
-            int rem=ele%k;
+            int rem=ele-k;
             if(map.containsKey(rem)){
-                int val=map.get(rem);
-                if(i-val>=2)return true;
+               int j= map.get(rem);
+                if(j-i>=2)return true;
+                
             }else{
                 map.put(rem,i);
             }
+
         }
         return false;
+            
         
     }
 }
