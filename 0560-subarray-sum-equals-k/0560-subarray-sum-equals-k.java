@@ -4,7 +4,7 @@ class Solution {
        int[]pre=new int[nums.length];
        pre[0]=nums[0];
        for(int i=1;i<nums.length;i++){
-            pre[i]=pre[i-1]+nums[i];
+        pre[i]=pre[i-1]+nums[i];
        }
        int count=0;
        for(int i=0;i<nums.length;i++){
@@ -13,8 +13,8 @@ class Solution {
         int rem=ele-k;
         if(map.containsKey(rem)){
             count+=map.get(rem);
-        }
-        if(map.containsKey(ele)){
+
+        }if(map.containsKey(ele)){
             map.put(ele,map.get(ele)+1);
         }else{
             map.put(ele,1);
