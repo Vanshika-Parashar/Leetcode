@@ -1,7 +1,6 @@
 class Solution {
-
-    public int numSubarraysWithSum(int[] nums, int goal) {
-        if(goal<=0){
+    public int numSubarraysWithSum(int[] nums, int k) {
+        if(k<=0){
             int ans=0;
             int len=0;
             for(int i:nums){
@@ -16,24 +15,24 @@ class Solution {
             ans+=len*(len+1)/2;
             return ans;
         }
-        int i=0,j=0,a=0,b=0,n=nums.length,k=0,count=0;
+        int a=0,i=0,j=0,b=0,count=0,k2=0,n=nums.length;
         while(i<n && nums[i]==0){
             i++;
         }
-        while(j<n && k<goal){
+        while(j<n && k2<k){
             if(nums[j]==1){
-                k++;
+                k2++;
             }
             j++;
         }
-        if(k<goal)return 0;
+        if(k2<k)return 0;
         j--;
         b=j+1;
         while(b<n && nums[b]==0){
             b++;
         }
         b--;
-        while(b<n){
+        while(b<nums.length){
             count+=(i-a+1)*(b-j+1);
             a=i+1;
             i++;
@@ -46,14 +45,8 @@ class Solution {
                 b++;
             }
             b--;
-            
         }
         return count;
-
-
-       
+        
     }
-
-    
-
-    }
+}
