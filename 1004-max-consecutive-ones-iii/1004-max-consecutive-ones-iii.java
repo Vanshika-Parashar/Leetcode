@@ -13,7 +13,8 @@ class Solution {
                 }
                 i++;
             }
-            max=Math.max(max,j-i+1);
+            max=Math.max(j-i+1,max);
+
         }
         return max;
     }
