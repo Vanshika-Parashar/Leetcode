@@ -8,7 +8,7 @@ class Solution {
         for(int i=0;i<s.length();++i){
             dp[i][i]=true;
             for(int j=0;j<i;++j){
-                if(s.charAt(j)==s.charAt(i) && (i-j <=2  || dp[j+1][i-1])){
+                if(s.charAt(i)==s.charAt(j) && (i-j<=2 | dp[j+1][i-1])){
                     dp[j][i]=true;
                     if(i-j+1>maxlen){
                         maxlen=i-j+1;
@@ -19,6 +19,5 @@ class Solution {
             }
         }
         return s.substring(st,end+1);
-        
     }
 }
