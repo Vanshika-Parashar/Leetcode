@@ -3,17 +3,15 @@ class Solution {
         int jump=0;
         int l=0;
         int r=0;
-        int n =nums.length;
-        while(r<n-1){
-            int farthest=0;
+        while(r<nums.length-1){
+            int far=0;
             for(int i=l;i<=r;i++){
-                farthest=Math.max(farthest,i+nums[i]);
+                far=Math.max(i+nums[i],far);
             }
             l=r+1;
-            r=farthest;
+            r=far;
             jump++;
         }
         return jump;
-        
     }
 }
