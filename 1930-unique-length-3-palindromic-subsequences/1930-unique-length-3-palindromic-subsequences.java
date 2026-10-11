@@ -1,27 +1,27 @@
 class Solution {
     public int countPalindromicSubsequence(String s) {
-       HashMap<Character,Integer>fmap=new HashMap<>();
-       HashMap<Character,Integer>lmap=new HashMap<>();
-       for(int i=0;i<s.length();i++){
-        if(!fmap.containsKey(s.charAt(i))){
-            fmap.put(s.charAt(i),i);
-        }
-        lmap.put(s.charAt(i),i);
-       }
-       int count=0;
-       for(char ch:fmap.keySet()){
-        int st=fmap.get(ch);
-        int end=lmap.get(ch);
-        if(st!=end){
-            Set<Character>set=new HashSet<>();
-            for(int i=st+1;i<end;i++){
-                set.add(s.charAt(i));
+        HashMap<Character,Integer>st=new HashMap<>();
+        HashMap<Character,Integer>end=new HashMap<>();
+        char[]ch=s.toCharArray();
+        for(int i=0;i<ch.length;i++){
+            if(!st.containsKey(ch[i])){
+                st.put(ch[i],i);
             }
-            count+=set.size();
+            end.put(ch[i],i);
         }
-        
-        
-       }
-        return count;
+        int ans=0;
+        for(char i:st.keySet()){
+            int f=st.get(i);
+            int l=end.get(i);
+            if(f!=l){
+                HashSet<Character>set=new HashSet<>();
+                for(int j=f+1;j<l;j++){
+                    set.add(ch[j]);
+                }
+                ans+=set.size();
+            }
+        }
+        return ans;
+
     }
 }
