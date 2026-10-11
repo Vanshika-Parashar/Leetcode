@@ -13,12 +13,13 @@ class Solution {
         int rem=ele-k;
         if(map.containsKey(rem)){
             count+=map.get(rem);
-
-        }if(map.containsKey(ele)){
+        }
+        if(map.containsKey(ele)){
             map.put(ele,map.get(ele)+1);
         }else{
             map.put(ele,1);
         }
+
        }
        return count;
     }
