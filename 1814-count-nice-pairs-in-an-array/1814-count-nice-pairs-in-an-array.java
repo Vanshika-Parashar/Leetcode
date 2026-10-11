@@ -1,20 +1,18 @@
 class Solution {
     public int countNicePairs(int[] nums) {
-        HashMap<Integer,Integer>map=new HashMap<>();
         int count=0;
+        HashMap<Integer,Integer>map=new HashMap<>();
         for(int i=0;i<nums.length;i++){
             int ans=nums[i]-rev(nums[i]);
             if(map.containsKey(ans)){
                 count+=map.get(ans);
-                count%=1000000007;
+                count=count%1000000007;
                 map.put(ans,map.get(ans)+1);
             }else{
                 map.put(ans,1);
             }
-
         }
         return count;
-        
     }
     public int rev(int n){
         int rem=0;
