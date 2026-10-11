@@ -1,28 +1,27 @@
 class Solution {
-    public boolean canArrange(int[] nums, int k) {
+    public boolean canArrange(int[] nums, int k){
         HashMap<Integer,Integer>map=new HashMap<>();
-        for(int i=0;i<nums.length;i++){
-            int ele=nums[i];
-            int rem=ele%k;
-            if(rem<0)rem+=k;
-            map.put(rem,map.getOrDefault(rem,0)+1);
+        for(int i:nums){
+            int ele=i%k;
+            if(ele<0)ele=ele+=k;
+            map.put(ele,map.getOrDefault(ele,0)+1);
         }
         if(map.containsKey(0)){
-            if(map.get(0)%2!=0){
-                return false;
-            }
-            else{
-                map.remove(0);
-            }
+            int val=map.get(0);
+            if(val%2!=0)return false;
         }
+        map.remove(0);
         for(int i:map.keySet()){
-            int rem=k-i;;
+            int rem=k-i;
             if(!map.containsKey(rem))return false;
-            int freq1=map.get(i);
-            int freq2=map.get(rem);
-            if(freq1!=freq2)return false;
+            else{
+                int rf=map.get(rem);
+                int fi=map.get(i);
+                if(rf!=fi)return false;
+            }
         }
         return true;
-        
+
     }
 }
+                
