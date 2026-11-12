@@ -14,14 +14,13 @@ class Solution {
         ListNode a=head;
         ListNode b=head;
         while(b!=null){
-            while(b!=null && a.val==b.val){
-            b=b.next;
-        }
-        
+           if(b.val==a.val)b=b.next;
+           else{
             a.next=b;
             a=b;
+           }
         }
-           
+        a.next=null;
         
         return head;
     }
